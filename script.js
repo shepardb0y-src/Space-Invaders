@@ -190,6 +190,48 @@ class Spaceship{
     }
 }
 
-const enterprise = new Spaceship(20,5,6)
+//////// Alien stats////////
+function alienAttack(){
+    let random = Math.floor(Math.random()*3);
+    let attack= 0;
+    if (random === 0){
+        attack = 4
+        console.log("attack is 4")
+
+    }else if(random === 1) {
+        attack =2 
+        console.log("attack is 2")
+    }else {
+        attack = 3
+        console.log("attack is 3")
+    }
+  
+}
+
+function alienAccuracy(){
+    let random = Math.floor(Math.random()*3);
+    let accuracy = 0;
+    if (random === 0){
+        accuracy = .6
+        console.log("accuracy is .6")
+
+    }else if(random === 1) {
+        accuracy =.7 
+        console.log("accuracy is .7")
+    }else {
+        accuracy = .8
+        console.log("accuracy is .8")
+    }
+
+}
+
+alienAttack()
+alienAccuracy()
+
+
+
+
+const enterprise = new Spaceship(20,5,.7)
+const alien = new Spaceship(20,5,6)
+
 enterprise.attack()
-console.log('hi')
