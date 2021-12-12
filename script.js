@@ -188,22 +188,31 @@ class Spaceship{
     attack(){
         console.log('attack ememy ship')
     }
+
+    attackSequence(enemy){
+        if (Math.random() < enemy.accuracy){
+            enemy.hull =  enemy.hull- this.firepower
+            console.log( enemy.hull)
+        }else{
+            console.log("miss")
+        }
+    }
 }
 
 //////// Alien stats////////
 function alienAttack(){
     let random = Math.floor(Math.random()*3);
-    let attack= 0;
+    let firepower= 0;
     if (random === 0){
-        attack = 4
-        console.log("attack is 4")
+        firepower = 4
+        console.log(" alien firepower is 4")
 
     }else if(random === 1) {
-        attack =2 
-        console.log("attack is 2")
+        firepower =2 
+        console.log(" alien firepower is 2")
     }else {
-        attack = 3
-        console.log("attack is 3")
+        firepower = 3
+        console.log("alien firepower is 3")
     }
   
 }
@@ -212,26 +221,26 @@ function alienAccuracy(){
     let random = Math.floor(Math.random()*3);
     let accuracy = 0;
     if (random === 0){
-        accuracy = .6
-        console.log("accuracy is .6")
+        accuracy = .60
+        console.log("alien accuracy is .6")
 
     }else if(random === 1) {
-        accuracy =.7 
-        console.log("accuracy is .7")
+        accuracy =.70
+        console.log("alien accuracy is .7")
     }else {
-        accuracy = .8
-        console.log("accuracy is .8")
+        accuracy = .80
+        console.log(" alien accuracy is .8")
     }
 
 }
 
-alienAttack()
-alienAccuracy()
+// alienAttack()
+// alienAccuracy()
 
 
 
 
 const enterprise = new Spaceship(20,5,.7)
-const alien = new Spaceship(20,5,6)
-
-enterprise.attack()
+const alien = new Spaceship(20,5,.6)
+// console.log(enterprise.firepower)
+enterprise.attackSequence(alien)
