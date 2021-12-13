@@ -189,29 +189,65 @@ class Spaceship{
         console.log('attack ememy ship')
     }
 
-    attackSequence(enemy){
-        if (Math.random() < enemy.accuracy){
-            enemy.hull =  enemy.hull- this.firepower
-            console.log( enemy.hull)
-        }else{
-            console.log("miss")
-        }
+    // attackSequence(enemy){
+    //     if (Math.random() < enemy.accuracy){
+    //         enemy.hull =  enemy.hull- this.firepower
+    //         console.log( enemy.hull)
+    //     }else{
+    //         console.log("miss")
+    //     }
+    // }
+//     attackLoop(enemy){
+//         if (this.hull < 20){
+//             for(let i =0;i < enemy.length;i++){
+//                 this.attackSequence(enemy)
+                
+//             }
+//         }else{
+//             console.log("no")
+//         }
+//     }
+}
+////////human chlild constructor/////
+class Enterprise extends Spaceship{
+    constructor(hull,firepower,accuracy){
+        super(hull,firepower,accuracy)
+    }
+}
+const usHello = new Enterprise(20,5,.6)
+console.log(usHello)
+
+
+
+
+///////alien  constructor/////
+class AlienFLeet extends Spaceship{
+    constructor(hull,firepower,accuracy){
+        super(hull,firepower,accuracy)
     }
 }
 
+
+
+
+const alien1= new AlienFLeet(20,alienAttack(),alienAccuracy())
+console.log(alien1)
 //////// Alien stats////////
 function alienAttack(){
     let random = Math.floor(Math.random()*3);
     let firepower= 0;
     if (random === 0){
         firepower = 4
+        return 4
         console.log(" alien firepower is 4")
 
     }else if(random === 1) {
         firepower =2 
+        return 2
         console.log(" alien firepower is 2")
     }else {
         firepower = 3
+        return 3
         console.log("alien firepower is 3")
     }
   
@@ -222,13 +258,16 @@ function alienAccuracy(){
     let accuracy = 0;
     if (random === 0){
         accuracy = .60
+        return .6
         console.log("alien accuracy is .6")
 
     }else if(random === 1) {
         accuracy =.70
+        return .7
         console.log("alien accuracy is .7")
     }else {
         accuracy = .80
+        return .8
         console.log(" alien accuracy is .8")
     }
 
@@ -240,7 +279,17 @@ function alienAccuracy(){
 
 
 
-const enterprise = new Spaceship(20,5,.7)
-const alien = new Spaceship(20,5,.6)
+
+
+
+
+
+
+// const enterprise = new Spaceship(20,5,.7)
+// const alien = new Spaceship(20,5,.6)
+// const alienFleet = [alien]
+// const humanFleet= [enterprise]
+
 // console.log(enterprise.firepower)
-enterprise.attackSequence(alien)
+// enterprise.attackSequence(alienFleet)
+// alien.attackLoop(humanFleet)
