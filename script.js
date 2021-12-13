@@ -238,16 +238,16 @@ function alienAttack(){
     let firepower= 0;
     if (random === 0){
         firepower = 4
-        return 4
+        return firepower
         console.log(" alien firepower is 4")
 
     }else if(random === 1) {
         firepower =2 
-        return 2
+        return firepower
         console.log(" alien firepower is 2")
     }else {
         firepower = 3
-        return 3
+        return firepower
         console.log("alien firepower is 3")
     }
   
@@ -258,24 +258,47 @@ function alienAccuracy(){
     let accuracy = 0;
     if (random === 0){
         accuracy = .60
-        return .6
+        return accuracy
         console.log("alien accuracy is .6")
 
     }else if(random === 1) {
         accuracy =.70
-        return .7
+        return accuracy
         console.log("alien accuracy is .7")
     }else {
         accuracy = .80
-        return .8
+        return accuracy
         console.log(" alien accuracy is .8")
     }
 
 }
 
+function alienHealth(){
+    let random = Math.floor(Math.random()*4);
+    let health = 0;
+    if (random === 0){
+        health = 3
+        // return health
+        console.log("alien health is 3")
+
+    }else if(random === 1) {
+        health =4
+        // return health
+        console.log("alien health is 4")
+    }else if(random === 2){
+        health = 5
+        // return  health
+        console.log(" alien health is 5")
+    }else{
+        health = 6
+        // return health
+        console.log("alien health is 6")
+    }
+}
+
 // alienAttack()
 // alienAccuracy()
-
+alienHealth()
 
 
 
