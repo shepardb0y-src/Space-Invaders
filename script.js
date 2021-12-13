@@ -230,8 +230,14 @@ class AlienFLeet extends Spaceship{
 
 
 
-const alien1= new AlienFLeet(20,alienAttack(),alienAccuracy())
-console.log(alien1)
+const alien1= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien2= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien3= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien4= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien5= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien6= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alienFleet = [alien1,alien2,alien3,alien4,alien5,alien6]
+console.log(alienFleet)
 //////// Alien stats////////
 function alienAttack(){
     let random = Math.floor(Math.random()*3);
@@ -278,27 +284,27 @@ function alienHealth(){
     let health = 0;
     if (random === 0){
         health = 3
-        // return health
+        return health
         console.log("alien health is 3")
 
     }else if(random === 1) {
         health =4
-        // return health
+        return health
         console.log("alien health is 4")
     }else if(random === 2){
         health = 5
-        // return  health
+        return  health
         console.log(" alien health is 5")
     }else{
         health = 6
-        // return health
+        return health
         console.log("alien health is 6")
     }
 }
 
 // alienAttack()
 // alienAccuracy()
-alienHealth()
+// alienHealth()
 
 
 
