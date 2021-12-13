@@ -197,16 +197,16 @@ class Spaceship{
     //         console.log("miss")
     //     }
     // }
-//     attackLoop(enemy){
-//         if (this.hull < 20){
-//             for(let i =0;i < enemy.length;i++){
-//                 this.attackSequence(enemy)
+    attackLoop(enemy){
+        if (this.hull < 20){
+            for(let i =0;i < enemy.length;i++){
+                this.attackSequence(enemy)
                 
-//             }
-//         }else{
-//             console.log("no")
-//         }
-//     }
+            }
+        }else{
+            console.log("no")
+        }
+    }
 }
 ////////human chlild constructor/////
 class Enterprise extends Spaceship{
@@ -215,7 +215,7 @@ class Enterprise extends Spaceship{
     }
 }
 const usHello = new Enterprise(20,5,.6)
-console.log(usHello)
+// console.log(usHello)
 
 
 
@@ -225,20 +225,42 @@ class AlienFLeet extends Spaceship{
     constructor(hull,firepower,accuracy){
         super(hull,firepower,accuracy)
     }
+   
+  alienHull(){
+    return alienHealth
+  }
+  alienFirepower(){
+      return alienAttack
+  }
+  alienAcc(){
+      return alienAccuracy
+  }
+
 }
 
+function alienHealth (){
+    let random = Math.floor(Math.random()*4);
+     this.hull = 0;
+    if (random === 0){
+        this.hull = 3
+        return this.hull
+        console.log("alien health is 3")
 
+    }else if(random === 1) {
+        this.hullhull =4
+        return this.hull
+        console.log("alien health is 4")
+    }else if(random === 2){
+        this.hull = 5
+        return  this.hull 
+        console.log(" alien health is 5")
+    }else{
+        this.hull = 6
+        return this.hull
+        console.log("alien health is 6")
+    }
+}
 
-
-const alien1= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-const alien2= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-const alien3= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-const alien4= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-const alien5= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-const alien6= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-const alienFleet = [alien1,alien2,alien3,alien4,alien5,alien6]
-console.log(alienFleet)
-//////// Alien stats////////
 function alienAttack(){
     let random = Math.floor(Math.random()*3);
     let firepower= 0;
@@ -255,10 +277,10 @@ function alienAttack(){
         firepower = 3
         return firepower
         console.log("alien firepower is 3")
+        
     }
   
 }
-
 function alienAccuracy(){
     let random = Math.floor(Math.random()*3);
     let accuracy = 0;
@@ -278,29 +300,24 @@ function alienAccuracy(){
     }
 
 }
+// alienHealth()
+// alienAttack()
+// alienAccuracy()
 
-function alienHealth(){
-    let random = Math.floor(Math.random()*4);
-    let health = 0;
-    if (random === 0){
-        health = 3
-        return health
-        console.log("alien health is 3")
+const alien1= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien2= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien3= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien4= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien5= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alien6= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
+const alienFleet = [alien1,alien2,alien3,alien4,alien5,alien6]
+console.log(alienFleet)
+//////// Alien stats////////
 
-    }else if(random === 1) {
-        health =4
-        return health
-        console.log("alien health is 4")
-    }else if(random === 2){
-        health = 5
-        return  health
-        console.log(" alien health is 5")
-    }else{
-        health = 6
-        return health
-        console.log("alien health is 6")
-    }
-}
+
+
+
+
 
 // alienAttack()
 // alienAccuracy()
