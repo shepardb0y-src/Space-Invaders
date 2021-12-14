@@ -185,37 +185,31 @@ class Spaceship{
         this.firepower = firepower;
         this.accuracy = accuracy;
     }
-    attack(){
-        console.log('attack ememy ship')
-    }
-
-    // attackSequence(enemy){
-    //     if (Math.random() < enemy.accuracy){
-    //         enemy.hull =  enemy.hull- this.firepower
-    //         console.log( enemy.hull)
+  
+    // attackLoop(enemy){
+    //     if (this.hull < 20){
+    //         for(let i =0;i < enemy.length;i++){
+    //             this.attackSequence(enemy)
+                
+    //         }
     //     }else{
-    //         console.log("miss")
+    //         console.log("no")
     //     }
     // }
-    attackLoop(enemy){
-        if (this.hull < 20){
-            for(let i =0;i < enemy.length;i++){
-                this.attackSequence(enemy)
-                
-            }
-        }else{
-            console.log("no")
-        }
-    }
 }
 ////////human chlild constructor/////
 class Enterprise extends Spaceship{
     constructor(hull,firepower,accuracy){
         super(hull,firepower,accuracy)
     }
+    attack(){
+        return attackSequence
+    }
 }
 const usHello = new Enterprise(20,5,.6)
-// console.log(usHello)
+const user = [usHello]
+
+
 
 
 
@@ -238,6 +232,20 @@ class AlienFLeet extends Spaceship{
 
 }
 
+function userattackSequence(enemy){
+    let random =Math.random()
+    for (let i=0;i<enemy.length;i++) {
+     console.log(enemy[i].accuracy)
+     console.log(random)
+        if (usHello.accuracy > random ){
+            
+        enemy[i].hull =  enemy[i].hull- usHello.firepower
+        console.log(` ${enemy[i].hull} if enemey hull hp is 0 or less than 0 means death `)
+    }else{
+        console.log("miss")
+    }}
+}
+
 function alienHealth (){
     let random = Math.floor(Math.random()*4);
      this.hull = 0;
@@ -247,7 +255,7 @@ function alienHealth (){
         console.log("alien health is 3")
 
     }else if(random === 1) {
-        this.hullhull =4
+        this.hull =4
         return this.hull
         console.log("alien health is 4")
     }else if(random === 2){
@@ -304,6 +312,7 @@ function alienAccuracy(){
 // alienAttack()
 // alienAccuracy()
 
+
 const alien1= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
 const alien2= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
 const alien3= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
@@ -339,3 +348,5 @@ console.log(alienFleet)
 // console.log(enterprise.firepower)
 // enterprise.attackSequence(alienFleet)
 // alien.attackLoop(humanFleet)
+// user.attack(alienFleet)
+console.log(userattackSequence(alienFleet))
