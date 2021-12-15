@@ -180,10 +180,11 @@
 
 
 class Spaceship{
-    constructor(hull,firepower,accuracy){
+    constructor(hull,firepower,accuracy,alive){
         this.hull = hull;
         this.firepower = firepower;
         this.accuracy = accuracy;
+        this.alive =true;
     }
   
     // attackLoop(enemy){
@@ -199,14 +200,14 @@ class Spaceship{
 }
 ////////human chlild constructor/////
 class Enterprise extends Spaceship{
-    constructor(hull,firepower,accuracy){
-        super(hull,firepower,accuracy)
+    constructor(hull,firepower,accuracy,alive){
+        super(hull,firepower,accuracy,alive)
     }
     attack(){
         return attackSequence
     }
 }
-const usHello = new Enterprise(20,5,.6)
+const usHello = new Enterprise(20,5,.6,true)
 const user = [usHello]
 
 
@@ -216,8 +217,8 @@ const user = [usHello]
 
 ///////alien  constructor/////
 class AlienFLeet extends Spaceship{
-    constructor(hull,firepower,accuracy){
-        super(hull,firepower,accuracy)
+    constructor(hull,firepower,accuracy,alive){
+        super(hull,firepower,accuracy,alive)
     }
    
   alienHull(){
@@ -232,19 +233,34 @@ class AlienFLeet extends Spaceship{
 
 }
 
-function userattackSequence(enemy){
-    let random =Math.random()
-    for (let i=0;i<enemy.length;i++) {
-     console.log(enemy[i].accuracy)
-     console.log(random)
-        if (usHello.accuracy > random ){
-            
-        enemy[i].hull =  enemy[i].hull- usHello.firepower
-        console.log(` ${enemy[i].hull} if enemey hull hp is 0 or less than 0 means death `)
+function game(params) {
+    if ( usHello.accuracy <= Math.random()){
+        params.hull = params.hull - usHello.firepower
+        if(params.hull <= 0){
+            params.alive=false
+            return params
+        }
     }else{
-        console.log("miss")
-    }}
+        return "miss"
+    }
 }
+
+// function userattackSequencefleet(enemy){
+//     let random =Math.random()
+//     for (let i=0;i<enemy.length;i++) {
+//      console.log(enemy[i].accuracy)
+//      console.log(random)
+//         if (random < usHello.accuracy ){   
+//         enemy[i].hull =  enemy[i].hull- usHello.firepower
+//         console.log(` hit ${enemy[i].hull} if enemey hull hp is 0 or less than 0 means death `)
+//     }else{
+//         console.log("miss")
+//         console.log(` ${enemy[i].hull} if enemey hull hp is 0 or less than 0 means death `)
+//     }}
+// }
+
+
+
 
 function alienHealth (){
     let random = Math.floor(Math.random()*4);
@@ -320,7 +336,7 @@ const alien4= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
 const alien5= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
 const alien6= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
 const alienFleet = [alien1,alien2,alien3,alien4,alien5,alien6]
-console.log(alienFleet)
+// console.log(alienFleet)
 //////// Alien stats////////
 
 
@@ -349,4 +365,10 @@ console.log(alienFleet)
 // enterprise.attackSequence(alienFleet)
 // alien.attackLoop(humanFleet)
 // user.attack(alienFleet)
-console.log(userattackSequence(alienFleet))
+console.log(game(alien1))
+console.log(game(alien2))
+console.log(game(alien3))
+console.log(game(alien4))
+console.log(game(alien5))
+console.log(game(alien6))
+// console.log(alien1.hull)
