@@ -5,17 +5,6 @@ class Spaceship {
     this.accuracy = accuracy;
     this.alive = true;
   }
-
-  // attackLoop(enemy){
-  //     if (this.hull < 20){
-  //         for(let i =0;i < enemy.length;i++){
-  //             this.attackSequence(enemy)
-
-  //         }
-  //     }else{
-  //         console.log("no")
-  //     }
-  // }
 }
 ////////human chlild constructor/////
 class Enterprise extends Spaceship {
@@ -34,16 +23,6 @@ class AlienFLeet extends Spaceship {
   constructor(hull, firepower, accuracy, alive) {
     super(hull, firepower, accuracy, alive);
   }
-
-  //   alienHull() {
-  //     return alienHealth;
-  //   }
-  //   alienFirepower() {
-  //     return alienAttack;
-  //   }
-  //   alienAcc() {
-  //     return alienAccuracy;
-  //   }
 }
 
 const game = {
@@ -52,7 +31,7 @@ const game = {
   createAlien: function (params) {
     if (!this.alienOneReady) {
       //alien creation
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 1; i++) {
         this.alienFleet.push(
           new AlienFLeet(alienHealth(), alienAttack(), alienAccuracy())
         );
@@ -63,7 +42,7 @@ const game = {
       for (let i = 0; i < this.alienFleet.length; i++) {
         if (usHello.accuracy >= Math.random()) {
           this.alienFleet[i].hull = this.alienFleet[i].hull - usHello.firepower;
-          console.log(this.alienFleet[i].hull + "  user hit");
+          console.log(this.alienFleet[i].hull + "Alien health  user hit");
           alieattackSequencefleet(user);
         }
         //still alive
@@ -84,16 +63,21 @@ const game = {
 };
 
 function alieattackSequencefleet(enemy) {
+  if (!game.alienFleet.alive) {
+    console.log("kabloie");
+    //// return retreat or attack next alien
+    return;
+  }
   let random = Math.random();
   for (let i = 0; i < enemy.length; i++) {
     // console.log(enemy[i].accuracy);
     // console.log(random);
     if (random < usHello.accuracy) {
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
-      console.log(` alien hit ${enemy[i].hull} `);
+      console.log(` alien hit  ${enemy[i].hull} `);
     } else {
       //   console.log("miss");
-      console.log(` ${enemy[i].hull} allien miss `);
+      console.log(` ${enemy[i].hull} user health allien miss `);
     }
   }
 }
@@ -154,37 +138,5 @@ function alienAccuracy() {
     console.log(" alien accuracy is .8");
   }
 }
-// alienHealth()
-// alienAttack()
-// alienAccuracy()
 
-// const alien1= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-// const alien2= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-// const alien3= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-// const alien4= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-// const alien5= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-// const alien6= new AlienFLeet(alienHealth(),alienAttack(),alienAccuracy())
-// const alienFleet = [alien1,alien2,alien3,alien4,alien5,alien6]
-// console.log(alienFleet)
-//////// Alien stats////////
-
-// alienAttack()
-// alienAccuracy()
-// alienHealth()
-
-// const enterprise = new Spaceship(20,5,.7)
-// const alien = new Spaceship(20,5,.6)
-// const alienFleet = [alien]
-// const humanFleet= [enterprise]
-
-// console.log(enterprise.firepower)
-// enterprise.attackSequence(alienFleet)
-// alien.attackLoop(humanFleet)
-// user.attack(alienFleet)
 console.log(game.createAlien(usHello));
-// console.log(game(alien2))
-// console.log(game(alien3))
-// console.log(game(alien4))
-// console.log(game(alien5))
-// console.log(game(alien6))
-// console.log(alien1.hull)
