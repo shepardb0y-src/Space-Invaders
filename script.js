@@ -39,15 +39,18 @@ const game = {
       //   console.log(this.alienFleet);
       //   console.log(usHello.accuracy);
       //battle phase
+
       for (let i = 0; i < this.alienFleet.length; i++) {
         if (usHello.accuracy >= Math.random()) {
           this.alienFleet[i].hull = this.alienFleet[i].hull - usHello.firepower;
           console.log(this.alienFleet[i].hull + "Alien health  user hit");
+          //   this.alienFleet.alive = false;
+          console.log(this.alienFleet.alive);
           alieattackSequencefleet(user);
+          console.log(this.alienFleet[i].hull);
         }
         //still alive
-        else if (this.alienFleet[i].hull <= 0) {
-          this.alienFleet[i].alive = false;
+        else if (this.alienFleet[i].hull <= 0 && this.alienFleet.alive) {
           console.log(this.alienFleet + "second"); //dead alien
           // } else if (
           //   this.alienFleet[i].hull >= 0 &&
@@ -63,21 +66,21 @@ const game = {
 };
 
 function alieattackSequencefleet(enemy) {
-  if (!game.alienFleet.alive) {
-    console.log("kabloie");
-    //// return retreat or attack next alien
-    return;
-  }
+  game.alienFleet.alive = false;
   let random = Math.random();
   for (let i = 0; i < enemy.length; i++) {
     // console.log(enemy[i].accuracy);
     // console.log(random);
-    if (random < usHello.accuracy) {
+    if (random < usHello.accuracy && game.alienFleet[i].alive) {
+      ////isolates dead alien
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
-      console.log(` alien hit  ${enemy[i].hull} `);
+      //  game.createAlien(usHello); this meets the condition of if the alien survives but makes an infinite loop of creating aliens aas well
+      console.log(`  still alive alien hit  user ${enemy[i].hull} `);
+    } else if (random < usHello.accuracy && !game.alienFleet.alive) {
+      enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
     } else {
       //   console.log("miss");
-      console.log(` ${enemy[i].hull} user health allien miss `);
+      console.log(` ${enemy[i].hull} user health allien miss or dead `);
     }
   }
 }
