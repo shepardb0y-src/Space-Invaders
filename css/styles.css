@@ -3,3 +3,10 @@
   padding: 0;
   background-color: teal;
 }
+button {
+  width: 50vw;
+  height: 50vh;
+
+  position: absolute;
+  right: 5%;
+}

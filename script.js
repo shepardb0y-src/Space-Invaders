@@ -39,8 +39,8 @@ const game = {
       //   console.log(this.alienFleet);
       //   console.log(usHello.accuracy);
       //battle phase
-
       for (let i = 0; i < this.alienFleet.length; i++) {
+        myprompt();
         if (usHello.accuracy >= Math.random()) {
           this.alienFleet[i].hull = this.alienFleet[i].hull - usHello.firepower;
           console.log(this.alienFleet[i].hull + "Alien health  user hit");
@@ -57,8 +57,10 @@ const game = {
           //   this.alienFleet[i].hull < 6
           // ) {
           console.log("Cant stop me third");
+          alert("still alive");
         } else {
           console.log("miss");
+          alert("miss");
         }
       }
     }
@@ -66,6 +68,7 @@ const game = {
 };
 
 function alieattackSequencefleet(enemy) {
+  // myprompt();
   console.log(`first user hit`);
   let random = Math.random();
   for (let i = 0; i < enemy.length; i++) {
@@ -76,12 +79,14 @@ function alieattackSequencefleet(enemy) {
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
       //  game.createAlien(usHello); this meets the condition of if the alien survives but makes an infinite loop of creating aliens aas well
       console.log(`  still alive alien hit  user ${enemy[i].hull} `);
+      alert("thry are preparing to attack again");
     } else if (random < usHello.accuracy && game.alienFleet.alive) {
       game.alienFleet.alive = true;
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
     } else {
       //   console.log("miss");
       console.log(` ${enemy[i].hull} user health allien kablooie or missed `);
+      alert("so damaged potentially cant attack again");
     }
   }
 }
@@ -144,3 +149,25 @@ function alienAccuracy() {
 }
 
 console.log(game.createAlien(usHello));
+
+function myprompt() {
+  let text;
+  let favDrink = prompt("attack or retreat");
+  switch (favDrink) {
+    case "attack":
+      alert(`enemy hit`);
+      break;
+    case "retreat":
+      alert("game over");
+      console.log("gameover");
+      gamestate();
+      break;
+  }
+}
+
+function gamestate() {
+  if (game.alienOneReady) {
+    game.createAlien.alienFleet.alive = true;
+    console.log(game.alive);
+  }
+}
