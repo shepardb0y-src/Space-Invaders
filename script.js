@@ -31,7 +31,7 @@ const game = {
   createAlien: function (params) {
     if (!this.alienOneReady) {
       //alien creation
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < 7; i++) {
         this.alienFleet.push(
           new AlienFLeet(alienHealth(), alienAttack(), alienAccuracy())
         );
@@ -51,7 +51,7 @@ const game = {
         }
         //still alive
         else if (this.alienFleet[i].hull <= 0 && this.alienFleet.alive) {
-          console.log(this.alienFleet + "second"); //dead alien
+          console.log(this.alienFleet[i] + "second"); //dead alien
           // } else if (
           //   this.alienFleet[i].hull >= 0 &&
           //   this.alienFleet[i].hull < 6
@@ -66,21 +66,21 @@ const game = {
 };
 
 function alieattackSequencefleet(enemy) {
-  game.alienFleet.alive = false;
   let random = Math.random();
   for (let i = 0; i < enemy.length; i++) {
     // console.log(enemy[i].accuracy);
     // console.log(random);
-    if (random < usHello.accuracy && game.alienFleet[i].alive) {
+    if (random < usHello.accuracy && game.alienFleet[i].hull > 0) {
       ////isolates dead alien
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
       //  game.createAlien(usHello); this meets the condition of if the alien survives but makes an infinite loop of creating aliens aas well
       console.log(`  still alive alien hit  user ${enemy[i].hull} `);
-    } else if (random < usHello.accuracy && !game.alienFleet.alive) {
+    } else if (random < usHello.accuracy && game.alienFleet.alive) {
+      game.alienFleet.alive = true;
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
     } else {
       //   console.log("miss");
-      console.log(` ${enemy[i].hull} user health allien miss or dead `);
+      console.log(` ${enemy[i].hull} user health allien dead `);
     }
   }
 }
