@@ -66,6 +66,7 @@ const game = {
 };
 
 function alieattackSequencefleet(enemy) {
+  console.log(`first user hit`);
   let random = Math.random();
   for (let i = 0; i < enemy.length; i++) {
     // console.log(enemy[i].accuracy);
@@ -80,7 +81,7 @@ function alieattackSequencefleet(enemy) {
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
     } else {
       //   console.log("miss");
-      console.log(` ${enemy[i].hull} user health allien dead `);
+      console.log(` ${enemy[i].hull} user health allien kablooie or missed `);
     }
   }
 }
