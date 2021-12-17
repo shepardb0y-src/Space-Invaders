@@ -1,12 +1,21 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: teal;
+  background-color: black;
 }
-button {
-  width: 50vw;
-  height: 50vh;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  position: absolute;
-  right: 5%;
+button {
+  width: 50%;
+  height: 500;
+  background-color: red;
+}
+img {
+  height: 30%;
+  width: 30%;
 }

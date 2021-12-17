@@ -1,3 +1,8 @@
+const init = function () {
+  const game = 0;
+};
+init();
+
 class Spaceship {
   constructor(hull, firepower, accuracy, alive) {
     this.hull = hull;
@@ -29,6 +34,7 @@ const game = {
   alienOneReady: false,
   alienFleet: [],
   createAlien: function (params) {
+    // myprompt();
     if (!this.alienOneReady) {
       //alien creation
       for (let i = 0; i < 7; i++) {
@@ -40,7 +46,6 @@ const game = {
       //   console.log(usHello.accuracy);
       //battle phase
       for (let i = 0; i < this.alienFleet.length; i++) {
-        myprompt();
         if (usHello.accuracy >= Math.random()) {
           this.alienFleet[i].hull = this.alienFleet[i].hull - usHello.firepower;
           console.log(this.alienFleet[i].hull + "Alien health  user hit");
@@ -57,10 +62,13 @@ const game = {
           //   this.alienFleet[i].hull < 6
           // ) {
           console.log("Cant stop me third");
-          alert("still alive");
+          // alert("still alive");
+        } else if (this.alienFleet[i].hull <= 0 && !this.alienFleet.alive) {
+          // this.alienFleet.alive = false;
+          // alert("aline daed Kablooie!");
         } else {
           console.log("miss");
-          alert("miss");
+          // alert("miss");
         }
       }
     }
@@ -79,14 +87,14 @@ function alieattackSequencefleet(enemy) {
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
       //  game.createAlien(usHello); this meets the condition of if the alien survives but makes an infinite loop of creating aliens aas well
       console.log(`  still alive alien hit  user ${enemy[i].hull} `);
-      alert("thry are preparing to attack again");
+      // alert("thry are preparing to attack again");
     } else if (random < usHello.accuracy && game.alienFleet.alive) {
       game.alienFleet.alive = true;
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
     } else {
       //   console.log("miss");
-      console.log(` ${enemy[i].hull} user health allien kablooie or missed `);
-      alert("so damaged potentially cant attack again");
+      console.log(` ${enemy[i].hull} alien missed `);
+      // alert("so damaged potentially cant attack again");
     }
   }
 }
