@@ -33,11 +33,12 @@ class AlienFLeet extends Spaceship {
 const game = {
   alienOneReady: false,
   alienFleet: [],
+  win: "youwin",
   createAlien: function (params) {
     // myprompt();
     if (!this.alienOneReady) {
       //alien creation
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 6; i++) {
         this.alienFleet.push(
           new AlienFLeet(alienHealth(), alienAttack(), alienAccuracy())
         );
@@ -86,15 +87,21 @@ function alieattackSequencefleet(enemy) {
       ////isolates dead alien
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
       //  game.createAlien(usHello); this meets the condition of if the alien survives but makes an infinite loop of creating aliens aas well
-      console.log(`  still alive alien hit  user ${enemy[i].hull} `);
-      // alert("thry are preparing to attack again");
+      console.log(
+        `  still alive alien hit  user ${enemy[i].hull} alien health `
+      );
+      alert(
+        `alien survived they preparing to attack, attack lands  user haelth ${enemy[i].hull}`
+      );
     } else if (random < usHello.accuracy && game.alienFleet.alive) {
       game.alienFleet.alive = true;
       enemy[i].hull = enemy[i].hull - game.alienFleet[i].firepower;
     } else {
       //   console.log("miss");
       console.log(` ${enemy[i].hull} alien missed `);
-      // alert("so damaged potentially cant attack again");
+      alert(
+        `so damaged potentially they missed or dead alien current health ${game.alienFleet[i].hull}`
+      );
     }
   }
 }
@@ -156,14 +163,17 @@ function alienAccuracy() {
   }
 }
 
-console.log(game.createAlien(usHello));
+console.log();
 
 function myprompt() {
   let text;
   let favDrink = prompt("attack or retreat");
   switch (favDrink) {
     case "attack":
-      alert(`enemy hit`);
+      game.createAlien(usHello);
+      alert(`enemy hit but you live to fight on`);
+      console.log(game.createAlien.alienFleet);
+
       break;
     case "retreat":
       alert("game over");
